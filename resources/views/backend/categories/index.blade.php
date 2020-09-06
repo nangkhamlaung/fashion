@@ -19,7 +19,7 @@
 
 				<form action="{{route('categories.store')}}" method="POST" enctype="multipart/form-data">
 					@csrf
-					
+				</form>	
 					<table class="table table-bordered ">
 						<thead class="table-dark">
 							<tr>
@@ -41,15 +41,28 @@
 								
 								<td>{{$category->name}}</td>
 								<td>{{$category->photo}}</td>
-								<td><a href="" class="btn btn-info">Detail</a>
-								<a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning">Edit</a>
-								<a href="" class="btn btn-danger">Delete</a>
+								<td>
+									<form method="POST" action="{{route('categories.destroy',$category->id)}}" onsubmit="return confirm('Are you sure?')">
+									@csrf
+									@method('DELETE')
+
+									
+								
+								
+									
+
+									<a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i>
+									</a>
+									<button class="btn btn-danger">
+										<i class="fas fa-trash"></i>
+									</button>
+								</form>
 							</td>
 							</tr>
 							@endforeach
 						</tbody>
 					</table>
-				</form>
+				
 			</div>
 		</div>
 

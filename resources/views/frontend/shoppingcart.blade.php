@@ -1,5 +1,5 @@
 
- @extends('master')
+@extends('master')
 @section('content')
 
 <!-- Subcategory Title -->
@@ -23,7 +23,7 @@
 		</div>
 
 		<div class="row mt-5 shoppingcart_div">
-			<div class="table-responsive">
+			
 				<table class="table text-center">
 					<thead>
 						<tr>
@@ -50,8 +50,8 @@
 							<td></td>
 							<td>
 								<div class="row">
-								<h3 class="">Total :&nbsp;</h3>
-								<h3 class="total"></h3>
+								<h3>Total :&nbsp;</h3>
+								<h3 class="kyat"></h3>
 								<h3>&nbsp;Ks</h3>
 								</div>
 							</td>
@@ -63,11 +63,11 @@
 							<td colspan="3">
 								@role('Customer')
 								
-								<button class="btn btn-secondary btn-block mainfullbtncolor buy_now"> 
+								<a href="{{route('mainpage')}}" class="btn btn-secondary btn-block mainfullbtncolor buy_now"> 
 									Check Out
-								</button>
+								</a>
 									@else
-									<a href="{{route('login')}}" class="btn btn-secondary btn-block mainfullbtncolor"> 
+									<a href="{{route('loginpage')}}" class="btn btn-secondary btn-block mainfullbtncolor"> 
 									 Login to Check Out  
 									</a>
 								
@@ -76,7 +76,7 @@
 						</tr>
 					</tfoot>
 				</table>
-			</div>
+			
 		</div>
 
 		<!-- No Shopping Cart Div -->
@@ -94,8 +94,9 @@
 			</div>
 
 		</div>
-		@endsection
 		
 
 	</div>
+@endsection
+		
 	

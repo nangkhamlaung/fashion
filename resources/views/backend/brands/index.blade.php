@@ -8,6 +8,9 @@
 			<div class="col-md-12">
 		<a href="{{route('brands.create')}}" class="btn btn-info" >Add New</a>
 			</div>
+			<form action="{{route('brands.store')}}" method="POST" enctype="multipart/form-data">
+					@csrf 
+				</form>
 		</div>
 	</div>
 	
@@ -17,8 +20,7 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<form action="{{route('brands.store')}}" method="POST" enctype="multipart/form-data">
-					@csrf
+				
 					
 					<table class="table table-bordered ">
 						<thead class="table-dark">
@@ -41,15 +43,27 @@
 								
 								<td>{{$brand->name}}</td>
 								<td>{{$brand->photo}}</td>
-								<td><a href="" class="btn btn-info">Detail</a>
+								<td>
+									<form method="POST" action="{{route('brands.destroy',$brand->id)}}" onsubmit="return confirm('Are you sure?')">
+									@csrf
+									@method('DELETE')
+									
+
+									<a href="{{route('brands.edit',$brand->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+									<button class="btn btn-danger">
+										<i class="fas fa-trash"></i>
+									</button>
+									{{-- <a href="" class="btn btn-info">Detail</a>
 								<a href="{{route('brands.edit',$brand->id)}}" class="btn btn-warning">Edit</a>
-								<a href="" class="btn btn-danger">Delete</a>
+ --}}
+								{{-- <a href="{{route('brands.destory',$brand->id)}}" class="btn btn-danger">Delete</a> --}}
+							</form>
 							</td>
 							</tr>
 							@endforeach
 						</tbody>
 					</table>
-				</form>
+				
 			</div>
 		</div>
 

@@ -38,29 +38,29 @@
 							@foreach ($order->items as $item)
 							@php
 							$subtotal=$item->price*$item->pivot->qty;
-							$total+=$subtotal;
+							$total+=$subtotal
 							@endphp
 
 							<tr>
 								<td>{{$i++}}</td>
 								
 								<td>{{$item->name}}</td>
-								<td>{{$item->price}}</td>
+								<td>{{$item->price}}MMK</td>
 								<td>{{$item->pivot->qty}}</td>
 								<td>{{$subtotal}}</td>
-								
-								
-								
-							</td>
 							</tr>
-							@endforeach
+							@endforeach		
+						
+							
 							<tr class="bg-dark text-white">
 								<td colspan="4">Total:</td>
 								<td>{{$total}}MMK</td>
 							</tr>
 						</tbody>
+
+						
 					</table>
-							</div>
+				</div>			
 		</div>
 
 	</div>

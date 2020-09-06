@@ -16,19 +16,28 @@ class PageController extends Controller
     	// $route = Route::current();
     	// dd($route);
     	//dd->die();
+        $brands=Brand::All();
         $categories=Category::All();
         $subcategories=Subcategory::All();
-                $items=Item::All();
-    	return view('frontend.main',compact('categories','subcategories','items'));
+        $items=Item::All();
+    	return view('frontend.main',compact('brands','categories','subcategories','items'));
 
     }
-    public function brandfun($value='')
+    public function brandfun($id)
     {
-    	return view('frontend.brand');
+         $brand=Brand::find($id);
+            $subcategories=Subcategory::All();
+            $categories=Category::All();
+         $items=Item::All();
+    	return view('frontend.brand',compact('brand','items','categories','subcategories'));
     }
-    public function itemdetailfun($value='')
+   
+    public function itemdetailfun($id)
     {
-    	return view('frontend.itemdetail');
+        $item=Item::find($id);
+        $categories=Category::All();
+        $subcategories=Subcategory::All();
+    	return view('frontend.itemdetail',compact('item','categories','subcategories'));
     }
      public function loginfun($value='')
     {
@@ -37,20 +46,18 @@ class PageController extends Controller
     	return view('frontend.login',compact('categories'));
     }
     public function promotionfun($value='')
-    {	
-    	
-    	return view('frontend.promotion');
+    {	$items=Item::All();
+    	$categories=Category::All();
+        $subcategories=Subcategory::All();
+    	return view('frontend.promotion',compact('categories','subcategories','items'));
     }
     public function registerfun($value='')
     {   
-        
-        return view('frontend.register');
+         $categories=Category::All();
+
+        return view('frontend.register',compact('categories'));
     }
-    public function logoutfun($value='')
-    {   
-       
-        return view('frontend.logout');
-    }
+    
     public function shoppingcartfun($value='')
     {   
         $categories=Category::All();
@@ -58,10 +65,14 @@ class PageController extends Controller
         $items=Item::All();
         return view('frontend.shoppingcart',compact('categories','subcategories','items'));
     }
-    public function subcategoryfun($value='')
+    public function subcategoryfun($id)
     {   
-        
-        return view('frontend.subcategory');
+          $categories=Category::All();
+          $subcategory=Subcategory::find($id);
+          $items=Item::All();
+          $subcategories=Subcategory::All();
+        return view('frontend.subcategory',compact('categories','subcategory','items','subcategories'));
     }
     
 }
+// 

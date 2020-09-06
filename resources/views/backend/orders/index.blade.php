@@ -1,24 +1,34 @@
 @extends('backendtemplate')
 @section('content')
 <div class="container-fluid">
-	{{-- page heading --}}
-	<div class="d-sm-flex align-items-center justify-content-between mb-4">
-		<h1 class="h3 mb-0 text-gray-800">Order List</h1>
-		{{-- <div class="row">
-			<div class="col-md-12">
-		<a href="{{route('orders.create')}}" class="btn btn-info" >Add New</a>
-			</div>
-		</div> --}}
-	</div>
 	
-	
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+	<!-- Page Heading -->
+    <div class="row">
+     <div class="col-md-12 mb-3">
+        <h1 class="h3 mb-0 text-gray-800 d-inline-block">Order List</h1>
 
-				<form action="{{route('orders.store')}}" method="POST" enctype="multipart/form-data">
-					@csrf
+        <form method="get" action="{{route('orders.index')}}" class="mt-2">
+          <div class="form-row">
+            <div class="col">
+              <input type="date" class="form-control" placeholder="Start Date" name="sdate">
+            </div>
+            <div class="col">
+              <input type="date" class="form-control" placeholder="End Date" name="edate">
+            </div>
+            <div class="col">
+              <input type="submit" class="btn btn-success" value="Search">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+	
+	
+	
+	
+		<div class="row">
+			<div class="col-md-12 ">
+
 					
 					<table class="table table-bordered ">
 						<thead class="table-dark">
@@ -50,10 +60,10 @@
 							@endforeach
 						</tbody>
 					</table>
-				</form>
+				
 			</div>
 		</div>
 
-	</div>
+
 </div>
 @endsection

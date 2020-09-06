@@ -56,3 +56,81 @@ create-	show form->for user,store data
 retrieve-display data(all,row)
 upadte-	show form with old value,update data
 delete-delete data
+
+
+Zoom Note
+-order Insert (detail)
+-route(web.php)
+-create checkout btn in shopping cart page
+-External js(click checkout)(.buy_now)
+-orderController
+
+Authentication
+-installation
+-nodejs(call npm in terminal)
+-Docs
+-security/Authentication
+-Commands
+-composer require laravel/ui
+-php artisan ui bootstrap --auth
+-npm install(node_module)
+-npm run dev(ready state)
+Route
+-localhost:8000/login
+-localhost:8000/register
+
+Git (upload project into your repo)
+------
+-git init(will create.git folder)
+-git add .
+-git config --global user.name"nangkhamlaung"
+-git config --global user.email"nangkhamlaung4@gmail.com"
+-git commit -m "first commit"
+-git remote add origin (url)
+-git push -u origin master
+
+-----New file Added/Edit--
+-git status
+-git add .
+-git commit -m "added something"
+-git push -u origin master
+
+Git(clone)
+-git clone url
+-cd folder
+-cp .env.example .env(-)
+-composer install
+-php artisan key:generate
+(.env -database config)
+-php artisan migrate
+-php artisan db:seed
+-npm install
+-npm run dev
+
+Git(team)
+-git pull
+
+// User Management
+---------------
+users
+	-name
+	-email
+	-password
+teachers
+	-user_id
+parents
+	-user_id
+students
+	-user_id
+model_has_role
+	-model_id
+
+ToDo
+---
+Home
+-items,brands,categories,subcategories
+Filter
+-4
+Shopping cart (total amount)
+delete(try)
+update(selete->auto selected)

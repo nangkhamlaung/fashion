@@ -9,9 +9,9 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<form action="{{route('items.update',$item->id)}}" method="PUT" enctype="multipart/form-data">
+				<form action="{{route('items.update',$item->id)}}" method="POST" enctype="multipart/form-data">
 					@csrf
-					
+					@method('PUT')
 					<div class="form-group row">
 						<label for="codeno" class="col-sm-2 col-form-label">Code NO</label>
 						<div class="col-sm-6">

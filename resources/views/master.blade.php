@@ -78,37 +78,29 @@
 						</div>
 					</div>
 					<div class="col-lg-4 col-10">
-					<ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+			@role('Customer')
+            <span classs="float-right d-xl-block d-lg-block d-md-block d-none">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle loginLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }}
+              </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
+            </span>
+            @else
+            <span classs="float-right d-xl-block d-lg-block d-md-block d-none">
+              <a href="{{route('loginpage')}}" class="text-decoration-none loginLink"> Login </a> | <a href="{{route('registerpage')}}" class="text-decoration-none loginLink"> Sign-up </a>
+            </span>
+            @endrole
 					
 
 						
@@ -129,15 +121,15 @@
 
 					<i class="icofont-shopping-cart"></i>
 
-					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti cartnoti">
+					<span class="badge badge-pill badge-light badge-notify cartNotistyle  cartnoti">
 						
 					</span>
-					<span class="total">Ks </span>
+					<span class="kyat">Ks </span>
 				</a>
 				
 				<a href="" class="text-decoration-none d-xl-none d-lg-none d-md-none d-sm-inline-block d-inline-block shoppingcartLink"> 
 					<i class="icofont-shopping-cart"></i>
-					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti"> 1 </span>
+					<span class="badge badge-pill badge-light badge-notify cartNotistyle cartNoti cartnoti"> 1 </span>
 				</a>
 
 				<!-- App Download -->
@@ -168,11 +160,16 @@
 			          			<i class="icofont-rounded-right float-right"></i>
 			          		</a>
 				            <ul class="dropdown-menu">
-				            	@foreach($subcategories as $subcategory)
+				            	@foreach($category->subcategories as $subcategory)
 				            	<h6 class="dropdown-header">
-				            		@if($category->id==$subcategory->category_id)
+				            		<a href="{{route('subcategorypage',$subcategory->id)}}">
 				            		{{$subcategory->name}}
-				            		@endif
+				            		</a>
+				            		{{-- @if($category->id==$subcategory->category_id)
+				            		<a href="{{route('subcategorypage',$subcategory->id)}}">
+				            		{{$subcategory->name}}
+				            		</a>
+				            		@endif --}}
 				            	</h6>
 				              	
 
@@ -185,7 +182,7 @@
 			</div>
 
 			<div class="col-3">
-				<a href="" class="text-decoration-none text-dark font-weight-bold"> Promotion </a>
+				<a href="{{route('promotionpage')}}" class="text-decoration-none text-dark font-weight-bold"> Promotion </a>
 			</div>
 			<div class="col-3">
 				<div class="hov-dropdown d-inline-block">

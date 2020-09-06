@@ -12,6 +12,8 @@ $.ajaxSetup({
 
 	$('.addtocartBtn').click(function(){
 		//alert('hello');
+		cartnoti();
+
 		var id = $(this).data('id');
 		var name = $(this).data('name');
 		var photo=$(this).data('photo');
@@ -106,6 +108,7 @@ $.ajaxSetup({
 
 	$('#tbody').on('click','.remove',function(){
 		//alert('ok');
+
 		var id = $(this).data('id');
 		
 		var itemString = localStorage.getItem('items');
@@ -125,6 +128,7 @@ $.ajaxSetup({
 			var itemData = JSON.stringify(itemArray);
 			localStorage.setItem("items",itemData);
 			showMyItem();
+			cartnoti();
 		}
 	})
 	
@@ -210,7 +214,7 @@ $.ajaxSetup({
 				j++;
 			});
 			$("#tbody").html(html);
-			$('.total').text(total);
+			$('.kyat').text(total);
 		}
 
 	

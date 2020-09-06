@@ -85,7 +85,10 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        $brands=Brand::all();
+        $subcategories=Subcategory::all();
+        
+       return view('backend.items.show',compact('item','brands','subcategories'));
     }
 
     /**
@@ -156,6 +159,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+        return redirect()->route('items.index');
     }
 }
